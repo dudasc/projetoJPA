@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -40,7 +41,11 @@ public class Produto {
     private CategoriaProduto categoria;
     
     @ManyToMany(mappedBy="listaProdutos")  
-    private List<Venda> listaVendas;  
+    private List<Venda> listaVendas; 
+    
+    @ManyToOne
+     @JoinColumn(name = "id_fornecedor")
+    private Fornecedor fornecedor;
 
     public Produto() {
     }
